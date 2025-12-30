@@ -1,0 +1,8 @@
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\resources\gamedata\offsets.jsonc
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\resources\gamedata\patches.jsonc
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\resources\gamedata\signatures.jsonc
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\resources\templates\template.jsonc
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\resources\translations\en.jsonc
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\C4Timer.dll
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\C4Timer.pdb
+C:\CS2 Plugins\C4Timer\C4Timer\build\publish\C4Timer\C4Timer.deps.json
