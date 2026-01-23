@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CS2 Plugins\\C4Timer\\C4Timer\\C4Timer.csproj": {}
+    "C:\\cs plugins\\C4Timer\\C4Timer\\C4Timer.csproj": {}
   },
   "projects": {
-    "C:\\CS2 Plugins\\C4Timer\\C4Timer\\C4Timer.csproj": {
+    "C:\\cs plugins\\C4Timer\\C4Timer\\C4Timer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CS2 Plugins\\C4Timer\\C4Timer\\C4Timer.csproj",
+        "projectUniqueName": "C:\\cs plugins\\C4Timer\\C4Timer\\C4Timer.csproj",
         "projectName": "C4Timer",
-        "projectPath": "C:\\CS2 Plugins\\C4Timer\\C4Timer\\C4Timer.csproj",
-        "packagesPath": "C:\\Users\\Yeezy\\.nuget\\packages\\",
-        "outputPath": "C:\\CS2 Plugins\\C4Timer\\C4Timer\\obj\\",
+        "projectPath": "C:\\cs plugins\\C4Timer\\C4Timer\\C4Timer.csproj",
+        "packagesPath": "C:\\Users\\Bogi\\.nuget\\packages\\",
+        "outputPath": "C:\\cs plugins\\C4Timer\\C4Timer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yeezy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Bogi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -50,37 +50,37 @@
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Configuration.Binder": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Configuration.Json": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.DependencyInjection": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.2, )"
             },
             "Microsoft.Extensions.Logging": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.0, )"
+              "version": "[10.0.2, )"
             },
             "SwiftlyS2.CS2": {
               "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[1.1.0, )"
+              "version": "[1.1.3, )"
             }
           },
           "imports": [
@@ -99,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

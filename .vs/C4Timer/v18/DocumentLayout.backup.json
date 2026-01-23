@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\cs plugins\\C4Timer\\C4Timer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{49BCBF72-A867-E762-A072-E8C63038F452}|C4Timer.csproj|c:\\cs plugins\\c4timer\\c4timer\\src\\c4timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49BCBF72-A867-E762-A072-E8C63038F452}|C4Timer.csproj|solutionrelative:src\\c4timer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "C4Timer.cs",
+              "DocumentMoniker": "C:\\cs plugins\\C4Timer\\C4Timer\\src\\C4Timer.cs",
+              "RelativeDocumentMoniker": "src\\C4Timer.cs",
+              "ToolTip": "C:\\cs plugins\\C4Timer\\C4Timer\\src\\C4Timer.cs",
+              "RelativeToolTip": "src\\C4Timer.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAtwHAAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-23T19:42:16.263Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

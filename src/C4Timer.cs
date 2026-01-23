@@ -20,11 +20,9 @@ public partial class C4Timer : BasePlugin
   private float _bombPlantedTime = float.NaN;
   private CPlantedC4? _plantedBomb = null;
   private readonly IOptionsMonitor<Config> _config;
-  // Menu references
-  private TextMenuOption _timerOption = null!;
-  private IMenuAPI _bombTimerMenu = null!;
+  private bool _showTimer = false;
 
-  public C4Timer(ISwiftlyCore core) : base(core)
+    public C4Timer(ISwiftlyCore core) : base(core)
   {
     Core.Configuration
                 .InitializeJsonWithModel<Config>("config.jsonc", "C4Timer")
@@ -47,28 +45,30 @@ public partial class C4Timer : BasePlugin
     Console.WriteLine("[Bomb Timer] Loaded successfully.");
   }
 
-  [GameEventHandler(HookMode.Pre)]
-  public HookResult OnBombPlanted(EventBombPlanted @event)
-  {
-    if (!_config.CurrentValue.Timer) 
+    [GameEventHandler(HookMode.Pre)]
+    public HookResult OnBombPlanted(EventBombPlanted @event)
+    {
+        if (!_config.CurrentValue.Timer)
             return HookResult.Continue;
 
-    var bomb = FindPlantedBomb();
-    if (bomb == null || !bomb.IsValid) return HookResult.Continue;
+        var bomb = FindPlantedBomb();
+        if (bomb == null || !bomb.IsValid)
+            return HookResult.Continue;
 
-    _plantedBomb = bomb;
-    _bombPlantedTime = Core.Engine.GlobalVars.CurrentTime;
+        _plantedBomb = bomb;
+        _bombPlantedTime = Core.Engine.GlobalVars.CurrentTime;
+        _showTimer = true;
 
-    @event.DontBroadcast = true;
-    CreateBombTimerMenu();
-    PlayBombPlantedSound();
+        @event.DontBroadcast = true;
+        PlayBombPlantedSound();
 
-    return HookResult.Continue;
-  }
+        return HookResult.Continue;
+    }
 
-  [GameEventHandler(HookMode.Pre)]
 
-  public HookResult OnRoundStart(EventRoundEnd @event)
+    [GameEventHandler(HookMode.Pre)]
+
+  public HookResult OnRoundEnd(EventRoundEnd @event)
   {
     CleanupBombTimer();
     ResetBombState();
@@ -87,31 +87,6 @@ public partial class C4Timer : BasePlugin
     _plantedBomb = null;
   }
 
-  private void CreateBombTimerMenu()
-  {
-    // Close any existing menu
-    if (_bombTimerMenu != null)
-    {
-      Core.MenusAPI.CloseMenu(_bombTimerMenu);
-    }
-
-    _timerOption = new TextMenuOption("C4 Time: 40.00s")
-    {
-      TextSize = MenuOptionTextSize.Medium,
-      PlaySound = false
-    };
-
-    _bombTimerMenu = Core.MenusAPI.CreateBuilder()
-        .Design.SetMenuTitle("Bomb Timer")
-        .DisableExit()
-        .DisableSound()
-        .AddOption(_timerOption)
-        .Build();
-
-    _bombTimerMenu.Configuration.HideFooter = true;
-    _bombTimerMenu.DefaultComment = "";
-    Core.MenusAPI.OpenMenu(_bombTimerMenu); // Shows to all players
-  }
 
   private void PlayBombPlantedSound()
   {
@@ -124,49 +99,63 @@ public partial class C4Timer : BasePlugin
     soundEvent.Emit();
   }
 
-  [EventListener<EventDelegates.OnTick>]
-  public void UpdateBombTimer()
-  {
-    // Full safety check — prevents any crash
-    if (_plantedBomb == null || !_plantedBomb.IsValid ||
-        float.IsNaN(_bombPlantedTime) ||
-        _timerOption == null ||
-        _bombTimerMenu == null)
+    [EventListener<EventDelegates.OnTick>]
+    public void UpdateBombTimer()
     {
-      return;
+        if (!_showTimer ||
+            _plantedBomb == null ||
+            !_plantedBomb.IsValid ||
+            float.IsNaN(_bombPlantedTime))
+        {
+            return;
+        }
+
+        float currentTime = Core.Engine.GlobalVars.CurrentTime;
+        float remainingTime = _plantedBomb.TimerLength - (currentTime - _bombPlantedTime);
+
+        string html;
+
+        if (remainingTime <= 0f)
+        {
+            html = """
+        <font size='36' color='#ff3333'><b BOOM </b></font>
+        """;
+            _showTimer = false;
+        }
+        else
+        {
+            html = $"""
+        <font size='38' color='#ff4444'><b>C4 PLANTED</b></font><br>
+        <font size='26' color='#ffffff'>
+        Time Left: {remainingTime:F2}s
+        </font>
+        """;
+        }
+
+        foreach (var player in Core.PlayerManager.GetAllPlayers())
+        {
+            if (!player.IsValid || player.IsFakeClient)
+                continue;
+
+            player.SendCenterHTMLAsync(html, 0);
+        }
     }
 
-    float currentTime = Core.Engine.GlobalVars.CurrentTime;
-    float remainingTime = _plantedBomb.TimerLength - (currentTime - _bombPlantedTime);
 
-    if (remainingTime <= 0f)
+    private void CleanupBombTimer()
     {
-      _timerOption.Text = "C4 Time: BOOM!";
-      return;
+        _showTimer = false;
+
+        foreach (var player in Core.PlayerManager.GetAllPlayers())
+        {
+            if (!player.IsValid || player.IsFakeClient)
+                continue;
+
+            player.SendCenterHTMLAsync("", 1);
+        }
     }
 
-    _timerOption.Text = $"C4 Time: {remainingTime:F2}s";
-  }
-
-  private void CleanupBombTimer()
-  {
-    if (_bombTimerMenu != null)
-    {
-      try
-      {
-        Core.MenusAPI.CloseMenu(_bombTimerMenu);
-      }
-      catch { /* ignore if already closed */ }
-
-      Core.MenusAPI.CloseMenu(_bombTimerMenu);
-
-      _bombTimerMenu = null;
-    }
-
-    _timerOption = null!;
-  }
-
-  public override void Unload()
+    public override void Unload()
   {
     CleanupBombTimer();
     Console.WriteLine("[Bomb Timer] Unloaded.");
