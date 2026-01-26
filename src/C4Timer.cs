@@ -14,7 +14,7 @@ using Microsoft.Extensions.Options;
 
 namespace C4Timer;
 
-[PluginMetadata(Id = "C4Timer", Version = "1.0.1", Name = "C4Timer-SwiftlyCS2", Author = "Yeezy", Description = "C4Timer")]
+[PluginMetadata(Id = "C4Timer", Version = "1.0.2", Name = "C4Timer-SwiftlyCS2", Author = "Yeezy", Description = "C4Timer")]
 public partial class C4Timer : BasePlugin
 {
   private float _bombPlantedTime = float.NaN;
@@ -111,7 +111,8 @@ public partial class C4Timer : BasePlugin
         }
 
         float currentTime = Core.Engine.GlobalVars.CurrentTime;
-        float remainingTime = _plantedBomb.TimerLength - (currentTime - _bombPlantedTime);
+        var DefaultBombTimer = Core.ConVar.Find<int>("mp_c4timer").Value;
+        float remainingTime = DefaultBombTimer - (currentTime - _bombPlantedTime);
 
         string html;
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3N6VadfefDY=",
+  "dgSpecHash": "34w7Wzr5p6I=",
   "success": true,
   "projectFilePath": "C:\\cs plugins\\C4Timer\\C4Timer\\C4Timer.csproj",
   "expectedPackageFiles": [
@@ -38,7 +38,7 @@
     "C:\\Users\\Bogi\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
     "C:\\Users\\Bogi\\.nuget\\packages\\spectre.console\\0.51.1\\spectre.console.0.51.1.nupkg.sha512",
     "C:\\Users\\Bogi\\.nuget\\packages\\stub.system.data.sqlite.core.netstandard\\1.0.119\\stub.system.data.sqlite.core.netstandard.1.0.119.nupkg.sha512",
-    "C:\\Users\\Bogi\\.nuget\\packages\\swiftlys2.cs2\\1.1.3\\swiftlys2.cs2.1.1.3.nupkg.sha512",
+    "C:\\Users\\Bogi\\.nuget\\packages\\swiftlys2.cs2\\1.1.4\\swiftlys2.cs2.1.1.4.nupkg.sha512",
     "C:\\Users\\Bogi\\.nuget\\packages\\system.data.sqlite.core\\1.0.119\\system.data.sqlite.core.1.0.119.nupkg.sha512",
     "C:\\Users\\Bogi\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.0\\system.diagnostics.eventlog.10.0.0.nupkg.sha512",
     "C:\\Users\\Bogi\\.nuget\\packages\\tomlyn\\0.17.0\\tomlyn.0.17.0.nupkg.sha512",
